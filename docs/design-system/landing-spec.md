@@ -28,7 +28,7 @@ Keep these four URLs in one `src/config/links.ts`, overridable by `NEXT_PUBLIC_A
 
 Render in this order. IDs are the nav anchors.
 
-1. **NavBar** — logo + "TendIA", links Cómo funciona `#como-funciona`, Para tenderos `#tenderos`, Para entidades `#aliados`, Seguridad `#seguridad`; buttons Portal del aliado (secondary) and Abrir la app (accent). Under 900px: links in a `<details>` menu, accent CTA stays visible.
+1. **NavBar** — logo + "TendIA", links Cómo funciona `#como-funciona`, Para tenderos `#tenderos`, Para entidades `#aliados`, Seguridad `#seguridad`; buttons Portal del aliado (secondary) and Abrir la app (primary: the hero's "Ver mi puntaje" is the one accent of the first screen). Under 900px: links in a `<details>` menu, the app CTA stays visible.
 2. **Hero** — copy exactly as in the Hero preview; phone frame with `app-puntaje.png`. This is the LCP element: load the image with `priority`.
 3. **HowItWorks** `#como-funciona` — the four steps: Autorizas, Anotas, Ves tu puntaje, Decides.
 4. **AudienceSplit** `#tenderos` / `#aliados` — the two cards from the preview.
