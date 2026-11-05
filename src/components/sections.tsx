@@ -16,10 +16,10 @@ function Brand() {
 }
 
 const NAV = [
-  { href: '#como-funciona', label: 'Cómo funciona' },
-  { href: '#tenderos', label: 'Para tenderos' },
-  { href: '#aliados', label: 'Para entidades' },
-  { href: '#seguridad', label: 'Seguridad' },
+  { href: '/#como-funciona', label: 'Cómo funciona' },
+  { href: '/#tenderos', label: 'Para tenderos' },
+  { href: '/#aliados', label: 'Para entidades' },
+  { href: '/#seguridad', label: 'Seguridad' },
 ];
 
 export function NavBar() {

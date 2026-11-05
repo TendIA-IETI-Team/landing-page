@@ -82,6 +82,101 @@ body {
   font: 800 14px/20px var(--font-sans);
 }
 
+/* Legal pages: long-form text rendered from content/legal/*.md */
+.td-prose {
+  max-width: 720px;
+  font-size: 18px;
+  line-height: 28px;
+}
+.td-prose h1 {
+  margin-bottom: var(--space-xl);
+}
+.td-prose h2 {
+  margin: var(--space-xl) 0 var(--space-sm);
+  font: 700 22px/30px var(--font-sans);
+  color: var(--indigo900);
+}
+.td-prose p,
+.td-prose ul,
+.td-prose ol {
+  margin: 0 0 var(--space-md);
+}
+.td-prose ul,
+.td-prose ol {
+  padding-left: var(--space-lg);
+}
+.td-prose ul {
+  list-style: disc;
+}
+.td-prose ol {
+  list-style: decimal;
+}
+.td-prose li::marker {
+  color: var(--indigo700);
+  font-weight: 700;
+}
+.td-prose li + li {
+  margin-top: var(--space-xs);
+}
+.td-prose a {
+  color: var(--indigo700);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.td-prose a:hover {
+  color: var(--indigo500);
+}
+.td-prose blockquote {
+  margin: 0 0 var(--space-lg);
+  padding: 12px 16px;
+  border: 1px solid var(--indigo300);
+  border-radius: var(--radius-sm);
+  background: var(--indigo100);
+  color: var(--indigo700);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+.td-prose blockquote p {
+  margin: 0;
+}
+.td-prose code {
+  font-size: 0.9em;
+  font-variant-numeric: tabular-nums;
+}
+.td-prose__table {
+  overflow-x: auto;
+  margin: 0 0 var(--space-md);
+  border: 1px solid var(--neutral300);
+  border-radius: var(--radius-md);
+}
+.td-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  line-height: 24px;
+}
+.td-prose th,
+.td-prose td {
+  padding: 10px 14px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--neutral300);
+}
+.td-prose tr:last-child td {
+  border-bottom: 0;
+}
+.td-prose th {
+  background: var(--indigo50);
+  font-weight: 700;
+}
+.td-prose__other {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--neutral300);
+  font-size: 16px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
