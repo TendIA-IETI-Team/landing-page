@@ -1,0 +1,48 @@
+/* TendIA — from docs/design-system/tokens.json. The only place hex values live (with tailwind.config.ts). */
+:root {
+  --indigo900: #1f1a4d;
+  --indigo700: #362d7c;
+  --indigo500: #5b4fb0;
+  --indigo300: #9c93e0;
+  --indigo100: #eeebfa;
+  --indigo50: #f7f5fc;
+  --orange500: #f38b54;
+  --orange700: #b4501e;
+  --orange100: #fdede3;
+  --neutral600: #5f5b73;
+  --neutral300: #d9d6e3;
+  --white: #ffffff;
+  --success: #1b7346;
+  --success-bg: #e5f4ec;
+  --warning: #875a00;
+  --warning-bg: #fbf1dc;
+  --danger: #b3261e;
+  --danger-bg: #fbeae9;
+  --dark-bg: #14112e;
+  --chart-primary: #5b4fb0;
+  --chart-highlight: #d06b2c;
+  --chart-negative: #b5487a;
+  --chart-grid: #e6e3ef;
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+  --container-max: 1120px;
+  --nav-height: 72px;
+  --tap-min: 44px;
+
+  --font-sans: var(--font-nunito), Nunito, system-ui, sans-serif;
+}
