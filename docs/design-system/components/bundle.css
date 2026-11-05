@@ -11,7 +11,7 @@
   font-size: 16px;
   line-height: 24px;
 }
-.td a { color: inherit; }
+:where(.td a) { color: inherit; }
 .td :focus-visible { outline: 2px solid var(--indigo500, #5b4fb0); outline-offset: 2px; }
 .td-tabular { font-variant-numeric: tabular-nums; }
 .td-muted { color: var(--neutral600, #5f5b73); }
@@ -47,7 +47,7 @@
 .td-badge--success, .td-badge--bueno { background: var(--success-bg, #e5f4ec); color: var(--success, #1b7346); }
 .td-badge--warning, .td-badge--medio { background: var(--warning-bg, #fbf1dc); color: var(--warning, #875a00); }
 .td-badge--danger, .td-badge--bajo { background: var(--danger-bg, #fbeae9); color: var(--danger, #b3261e); }
-.td-badge--accent { background: var(--orange100, #fdede3); color: var(--orange700, #b4501e); }
+.td-badge--accent { background: var(--orange100, #fdede3); color: var(--indigo900, #1f1a4d); }
 
 /* ---------- Card ---------- */
 .td-card {
@@ -100,6 +100,7 @@
 .td-section--dark { background: var(--dark-bg, #14112e); color: var(--white, #fff); }
 .td-eyebrow { margin: 0 0 8px; font: 800 13px/18px var(--font-sans, Nunito, sans-serif); letter-spacing: 1px; text-transform: uppercase; color: var(--orange700, #b4501e); }
 .td-section--dark .td-eyebrow { color: var(--orange500, #f38b54); }
+.td-section--tint .td-eyebrow { color: var(--indigo700, #362d7c); }
 .td-h2 { margin: 0; font: 800 28px/36px var(--font-sans, Nunito, sans-serif); color: var(--indigo900, #1f1a4d); }
 @media (min-width: 640px) { .td-h2 { font-size: 36px; line-height: 44px; } }
 .td-section--dark .td-h2 { color: var(--white, #fff); }

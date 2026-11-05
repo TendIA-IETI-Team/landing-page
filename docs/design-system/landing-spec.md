@@ -22,13 +22,13 @@ Keep these four URLs in one `src/config/links.ts`, overridable by `NEXT_PUBLIC_A
 - **Tokens:** copy this system's `tokens.json` values into `src/styles/tokens.css` as CSS custom properties with the same names (`--indigo700`, `--space-lg`, `--radius-md`, …), and mirror them in `tailwind.config.ts` (`brand.900/700/500/300/100/50`, `accent.500/700/100`, `ink`, `ink-muted`, `line`, `success|warning|danger` + `bg`, `dark`) exactly as `apps/portal/tailwind.config.ts` does. Never hard-code a hex outside those two files.
 - **Components:** one React component per landing component in this system, under `src/components/`, reproducing each `preview.html` markup and `bundle.css` rules (with Tailwind utilities or a CSS module; either is fine, but the rendered result must match the previews).
 - No UI kit, no animation library, no analytics beyond **Vercel Web Analytics** (cookieless, so no consent banner).
-- Package manager pnpm, Node 24. Scripts: `dev`, `build`, `lint`, `typecheck`, `test` (Playwright + axe).
+- Package manager pnpm, Node 22 (same as `apps/portal`). Scripts: `dev`, `build`, `lint`, `typecheck`, `test` (Playwright + axe).
 
 ## Page structure (`src/app/page.tsx`)
 
 Render in this order. IDs are the nav anchors.
 
-1. **NavBar** — logo + "TendIA", links Cómo funciona `#como-funciona`, Para tenderos `#tenderos`, Para entidades `#aliados`, Seguridad `#seguridad`; buttons Portal del aliado (secondary) and Abrir la app (accent). Under 900px: links in a `<details>` menu, accent CTA stays visible.
+1. **NavBar** — logo + "TendIA", links Cómo funciona `#como-funciona`, Para tenderos `#tenderos`, Para entidades `#aliados`, Seguridad `#seguridad`; buttons Portal del aliado (secondary) and Abrir la app (primary: the hero's "Ver mi puntaje" is the one accent of the first screen). Under 900px: links in a `<details>` menu, the app CTA stays visible.
 2. **Hero** — copy exactly as in the Hero preview; phone frame with `app-puntaje.png`. This is the LCP element: load the image with `priority`.
 3. **HowItWorks** `#como-funciona` — the four steps: Autorizas, Anotas, Ves tu puntaje, Decides.
 4. **AudienceSplit** `#tenderos` / `#aliados` — the two cards from the preview.
@@ -68,7 +68,7 @@ Use `next/image` with explicit `width`/`height`; alt texts as in the previews.
 
 ## Performance budget (blocking)
 
-Lighthouse mobile ≥ 95 in Performance, Accessibility, Best Practices and SEO; LCP < 2.5 s, CLS < 0.05, total JS < 100 KB gzipped. The page should be a Server Component; only the mobile menu may be a client component (or none, with `<details>`).
+Lighthouse mobile ≥ 95 in Performance, Accessibility, Best Practices and SEO; LCP < 2.5 s, CLS < 0.05, first-load JS ≤ 110 KB gzipped (the Next.js + React baseline is about 102 KB). The page should be a Server Component; only the mobile menu may be a client component (or none, with `<details>`).
 
 ## Acceptance criteria
 

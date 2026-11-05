@@ -15,7 +15,7 @@ TendIA turns a neighborhood shop's real activity (card-terminal sales, payments 
 **Color.** The palette comes from the logo: `indigo700` is the house, `orange500` the spark.
 - Page ground `indigo50`; cards `white` with a `neutral300` hairline; alternating sections `indigo100` (tint) and `white`; data band and footer `dark-bg`.
 - Text: `indigo900` on light grounds, `neutral600` for secondary text; white, `indigo300` or `orange500` on `dark-bg` and `indigo700`.
-- `orange500` is for ONE featured CTA per view and for achievements. Text on it is always `indigo900` (6.6:1); **never white on orange** (2.4:1). For orange text on light grounds use `orange700`.
+- `orange500` is for ONE featured CTA per view and for achievements. Text on it is always `indigo900` (6.6:1); **never white on orange** (2.4:1). For orange text use `orange700`, on `white` or `indigo50` only: on `indigo100` (4.35:1) and `orange100` (4.48:1) it misses AA, so eyebrows on tint sections turn `indigo700` and the accent badge sets `indigo900` on `orange100`.
 - **Orange never means bad.** Score bands use `danger` / `warning` / `success` with their `-bg` tints and their names written. **Never color alone**: every state, bar and chart value carries a word or sign.
 - Charts use `chart-primary`, `chart-highlight`, `chart-negative` on `chart-grid`, always labelled.
 - One light theme: the product has no dark mode. `dark-bg` is a section ground, not a theme.
