@@ -61,6 +61,10 @@ Los tokens vienen de [`packages/tokens`](https://github.com/TendIA-IETI-Team/ten
 
 Los estilos de los componentes están en `src/styles/components.css` (clases `td-`, las mismas de `docs/design-system/components/bundle.css`) y los tokens en `src/styles/tokens.css` y `tailwind.config.ts`.
 
+## Páginas legales
+
+`/privacidad` y `/tratamiento-de-datos` se generan en el build desde `content/legal/`, que es una copia exacta de [`docs/legal/`](https://github.com/TendIA-IETI-Team/tendia/tree/main/docs/legal) del repositorio principal. Ese es el original: si cambia allá, copia el archivo aquí sin editarlo. Los textos siguen siendo borradores para revisión jurídica.
+
 ## Stack
 
 Next.js 15 (App Router, todo estático) · TypeScript · Tailwind CSS 3 · Nunito (`next/font`) · Playwright + axe · Vercel.

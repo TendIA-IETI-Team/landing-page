@@ -8,9 +8,10 @@ export const links = {
 
 const repo = links.repo.replace(/\/$/, '');
 
+/** Legal pages live on the landing (src/app/privacidad, src/app/tratamiento-de-datos). */
 export const legal = {
-  privacidad: `${repo}/blob/main/docs/legal/aviso-privacidad.md`,
-  tratamiento: `${repo}/blob/main/docs/legal/politica-tratamiento-datos.md`,
+  privacidad: '/privacidad',
+  tratamiento: '/tratamiento-de-datos',
   equipo: `${repo}#-equipo`,
 } as const;
 
