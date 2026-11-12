@@ -6,13 +6,10 @@ export const links = {
   repo: process.env.NEXT_PUBLIC_REPO_URL ?? 'https://github.com/TendIA-IETI-Team/tendia',
 } as const;
 
-const repo = links.repo.replace(/\/$/, '');
-
 /** Legal pages live on the landing (src/app/privacidad, src/app/tratamiento-de-datos). */
 export const legal = {
   privacidad: '/privacidad',
   tratamiento: '/tratamiento-de-datos',
-  equipo: `${repo}#-equipo`,
 } as const;
 
 /** "Quiero ser aliado" only renders when a contact email is configured. */

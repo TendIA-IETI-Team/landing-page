@@ -1,5 +1,6 @@
 @import '../styles/tokens.css';
 @import '../styles/components.css';
+@import '../styles/sections.css';
 
 @tailwind base;
 @tailwind components;
@@ -9,8 +10,9 @@
   color-scheme: light;
 }
 
+/* No smooth scrolling: with content-visibility on the sections (sections.css), a smooth jump
+   renders sections on the way and overshoots the anchor. An instant jump lands exactly. */
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: var(--nav-height);
 }
 

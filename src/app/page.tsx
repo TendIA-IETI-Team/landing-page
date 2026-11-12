@@ -6,9 +6,18 @@ import {
   Hero,
   HowItWorks,
   NavBar,
-  PhoneShowcase,
   TrustList,
 } from '@/components/sections';
+import {
+  Cuaderno,
+  Equipo,
+  Precios,
+  Preguntas,
+  Problema,
+  Pruebalo,
+  PuntajeExplicado,
+  Usabilidad,
+} from '@/components/story';
 
 export default function Home() {
   return (
@@ -19,11 +28,18 @@ export default function Home() {
       <NavBar />
       <main id="contenido">
         <Hero />
+        <Problema />
         <HowItWorks />
+        <PuntajeExplicado />
         <AudienceSplit />
-        <PhoneShowcase />
+        <Cuaderno />
         <DataStats />
+        <Precios />
+        <Usabilidad />
         <TrustList />
+        <Pruebalo />
+        <Preguntas />
+        <Equipo />
         <CtaBand />
       </main>
       <Footer />
