@@ -26,17 +26,26 @@ Keep these four URLs in one `src/config/links.ts`, overridable by `NEXT_PUBLIC_A
 
 ## Page structure (`src/app/page.tsx`)
 
-Render in this order. IDs are the nav anchors.
+Render in this order. IDs are the nav anchors. Section grounds alternate as listed so two neighbours never share one.
 
-1. **NavBar** — logo + "TendIA", links Cómo funciona `#como-funciona`, Para tenderos `#tenderos`, Para entidades `#aliados`, Seguridad `#seguridad`; buttons Portal del aliado (secondary) and Abrir la app (primary: the hero's "Ver mi puntaje" is the one accent of the first screen). Under 900px: links in a `<details>` menu, the app CTA stays visible.
+1. **NavBar** — logo + "TendIA", links Cómo funciona `/#como-funciona`, Tu puntaje `/#puntaje`, Para entidades `/#precios`, Pruébalo `/#pruebalo`, Preguntas `/#preguntas` (with `/` so they work from the legal pages); buttons Portal del aliado (secondary) and Abrir la app (primary: the hero's "Ver mi puntaje" is the one accent of the first screen). Under 900px: links in a `<details>` menu, the app CTA stays visible.
 2. **Hero** — copy exactly as in the Hero preview; phone frame with `app-puntaje.png`. This is the LCP element: load the image with `priority`.
-3. **HowItWorks** `#como-funciona` — the four steps: Autorizas, Anotas, Ves tu puntaje, Decides.
-4. **AudienceSplit** `#tenderos` / `#aliados` — the two cards from the preview.
-5. **PhoneShowcase** — title "Así se ve" (eyebrow "Producto real"): Tendi (`app-tendi.png`), Mi cuaderno (`app-cuaderno.png`) and the portal (`portal-bandeja.png`, in the browser frame). Intro line: "Tendi usa IA para anotar lo que le cuentas. El puntaje lo calcula un modelo que se explica, no la IA."
-6. **DataStats** — the three sourced figures on `dark-bg`.
-7. **TrustList** `#seguridad` — the three cards.
-8. **CtaBand** — "¿Tu entidad le presta a tiendas de barrio?"; Quiero ser aliado → `mailto:${NEXT_PUBLIC_CONTACT_EMAIL}` (hide the button if unset), Ver la API.
-9. **Footer** — as in the preview; legal links to the main repo's `docs/legal/aviso-privacidad.md` and `docs/legal/politica-tratamiento-datos.md`; Equipo links to the README's team section.
+3. **Problema** `#problema` (white) — the 9,6 % figure and the **RateChart**: formal credit (median 61,9 % E.A., p25–p75 box 48,8–65,5 %, 5.992 Superfinanciera credits) against the loan shark (382–666 %), on one 0–700 % axis.
+4. **HowItWorks** `#como-funciona` (tint) — the four steps: Autorizas, Anotas, Ves tu puntaje, Decides.
+5. **PuntajeExplicado** `#puntaje` (white) — ScoreHero with 600 and the **ScoreBreakdown** table: a real `tendia-v2` output for a simulated traditional shop, 615 base, five factors and "otros 6", points with one decimal so the sum is exact. Plus the "La IA no calcula tu puntaje" alert.
+6. **AudienceSplit** `#tenderos` / `#aliados` (tint) — the two cards from the preview.
+7. **Cuaderno** `#cuaderno` (white) — the notebook photo, the table Claude read from it, and the Tendi recording in a phone frame.
+8. **DataStats** (dark) — 5.992 créditos (Superfinanciera), 20.488 micronegocios (EMICRON), AUC 0,741 (UCI #350).
+9. **Precios** `#precios` (tint) — $1.800.000 a month with 500 scores, $3.500 per extra score, "El tendero nunca paga", and the portal inbox in the browser frame.
+10. **Usabilidad** `#tenderos-reales` (white) — doña Gloria's three changes, the before/after of the guarantee screen and the evaluation figures, labelled as an evaluation without users.
+11. **TrustList** `#seguridad` (tint) — the three cards.
+12. **Pruebalo** `#pruebalo` (white) — the four demo phones (300 000 0001–0004); portal demo accounts by email request, never the password on the page.
+13. **Preguntas** `#preguntas` (tint) — eight `<details>` and a `FAQPage` JSON-LD built from the same list.
+14. **Equipo** `#equipo` — six people with initials, role and GitHub.
+15. **CtaBand** — "¿Tu entidad le presta a tiendas de barrio?"; Quiero ser aliado → `mailto:${NEXT_PUBLIC_CONTACT_EMAIL}` (falls back to Probar el portal if unset), Ver la API.
+16. **Footer** — as in the preview; legal links to `/privacidad` and `/tratamiento-de-datos`; Equipo to `/#equipo`.
+
+**Legal pages:** `/privacidad` and `/tratamiento-de-datos`, rendered at build time from `content/legal/` (a verbatim copy of the main repo's `docs/legal/`), with `td-prose` styles.
 
 ## Assets
 
@@ -46,9 +55,10 @@ Copy from the main repo (`TendIA-IETI-Team/tendia`) into `public/`; do not fetch
 | --- | --- | --- |
 | `docs/brand/tendia-logo.png` | `public/logo.png` | Nav, footer (on a white `radius-sm` tile on `dark-bg`), favicon, OG image |
 | `docs/img/app-puntaje.png` | `public/screens/app-puntaje.png` | Hero |
-| `docs/img/app-tendi.png` | `public/screens/app-tendi.png` | Showcase |
-| `docs/img/app-cuaderno.png` | `public/screens/app-cuaderno.png` | Showcase |
-| `docs/img/portal-bandeja.png` | `public/screens/portal-bandeja.png` | Showcase |
+| `docs/img/portal-bandeja.png` | `public/screens/portal-bandeja.png` | Precios |
+| `docs/img/cuaderno-ejemplo.jpg` | `public/media/cuaderno-ejemplo.jpg` | Cuaderno |
+| `docs/img/gifs/app-tendi-cuaderno.gif` | `public/media/app-tendi-cuaderno.gif` | Cuaderno (served `unoptimized`, lazy) |
+| `docs/img/usabilidad/antes-garantia.png`, `despues-garantia.png` | `public/media/` | Usabilidad |
 
 Use `next/image` with explicit `width`/`height`; alt texts as in the previews.
 
@@ -90,8 +100,8 @@ Lighthouse mobile ≥ 95 in Performance, Accessibility, Best Practices and SEO; 
 6. Tests + CI workflow; Vercel project linked to the repo.
 7. Open one PR per step group (scaffold+tokens, components, sections, SEO+tests), each with a screenshot at 375px and 1280px.
 
-## Open questions (ask the team before shipping)
+## Decisions taken
 
-- The public contact email for "Quiero ser aliado" (`NEXT_PUBLIC_CONTACT_EMAIL`).
-- The production domain (`NEXT_PUBLIC_SITE_URL`).
-- Whether legal pages should be rendered on the landing instead of linking to GitHub.
+- Contact email: set in Vercel as `NEXT_PUBLIC_CONTACT_EMAIL` (production and preview).
+- Domain: `tendia-landing.vercel.app`.
+- Legal pages: rendered on the landing. Their texts are still drafts with blanks in brackets; they are completed in the main repo's `docs/legal/` and copied verbatim.

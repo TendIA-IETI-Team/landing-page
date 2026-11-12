@@ -6,6 +6,7 @@ TendIA turns a neighborhood shop's real activity (card-terminal sales, payments 
 - **Plain words, tested with doña Gloria.** Write "ventas con datáfono", not "POS"; "cuentas del banco", not "open finance"; "respaldo del Fondo Nacional de Garantías", not "aval FNG"; "Bajo / Medio / Bueno", and "En construcción" when talking to a shopkeeper about a low score.
 - **Always say TendIA does not lend.** Every page carries "TendIA no presta dinero" in the first screen and in the footer. Never write "aprobado", "préstamo garantizado" or "DataCrédito" as a promise.
 - **Sentence case** for headings and buttons ("Ver mi puntaje", "Cómo funciona"). Eyebrows are the only uppercase text.
+- **Never overclaim.** Figures come from the repo with their source; an evaluation without users is called that, a simulated shop is called simulated, and demo data is labelled as demo.
 - **Numbers in Colombian format**: decimal comma and dot thousands ("9,6 %", "20.488", "0,741"), a space before "%". Every statistic carries its source ("DANE · EMICRON 2024").
 - **No emoji in the interface.** The repo's README uses them as section markers; the product and landing do not.
 - Real copy to reuse: "Crédito basado en tu negocio, no en tu pasado bancario." · "Un Puntaje TendIA de 0 a 1000, explicado en lenguaje sencillo, para las tiendas de barrio de Colombia." · "Justifica un mes malo con una foto, y el puntaje se recalcula."
@@ -17,7 +18,7 @@ TendIA turns a neighborhood shop's real activity (card-terminal sales, payments 
 - Text: `indigo900` on light grounds, `neutral600` for secondary text; white, `indigo300` or `orange500` on `dark-bg` and `indigo700`.
 - `orange500` is for ONE featured CTA per view and for achievements. Text on it is always `indigo900` (6.6:1); **never white on orange** (2.4:1). For orange text use `orange700`, on `white` or `indigo50` only: on `indigo100` (4.35:1) and `orange100` (4.48:1) it misses AA, so eyebrows on tint sections turn `indigo700` and the accent badge sets `indigo900` on `orange100`.
 - **Orange never means bad.** Score bands use `danger` / `warning` / `success` with their `-bg` tints and their names written. **Never color alone**: every state, bar and chart value carries a word or sign.
-- Charts use `chart-primary`, `chart-highlight`, `chart-negative` on `chart-grid`, always labelled.
+- Charts use `chart-primary`, `chart-highlight`, `chart-negative` on `chart-grid`, always labelled. `chart-primary` and `chart-negative` together pass the color-blind check (ΔE 10,8) and 3:1 on `white` and `indigo100`; every bar prints its value, and a chart is a `<table>` or carries its numbers as text.
 - One light theme: the product has no dark mode. `dark-bg` is a section ground, not a theme.
 
 **Type.** Nunito only (Google Fonts, weights 400/600/700/800), loaded with `display: swap`. Hero headline `display` (56/60, 800; 40/44 on phones); section titles `h2`; card titles `h3`; intros `lead`; shopkeeper-facing copy `body-lg` (18px, as in the app, for older readers); entity-facing copy `body` (16px, as in the portal); buttons and labels `label`; badges and sources `caption`. Scores and amounts use tabular numerals (`font-variant-numeric: tabular-nums`) and `score-numeral`.
@@ -30,7 +31,7 @@ TendIA turns a neighborhood shop's real activity (card-terminal sales, payments 
 
 **Focus and states.** Focus ring: 2px solid `indigo500`, offset 2px (≥3:1 on `indigo50`, `white` and `indigo100`). Hover: primary darkens to `indigo900`; secondary fills `indigo50`; accent `brightness(.95)`. Disabled: 50% opacity, `not-allowed` cursor. Tappable controls ≥ `tap-min` (44px).
 
-**Imagery.** Real product screenshots only (`assets/Screenshots/`), in the phone or browser frames of PhoneShowcase. No stock photos, no illustrations of money, no mascots, no gradients.
+**Imagery.** Real product screenshots and recordings only (`assets/Screenshots/`, `assets/Media/`), in the phone or browser frames of PhoneShowcase. The notebook photo is the repo's example page; say so rather than presenting it as a customer's. No stock photos, no illustrations of money, no mascots, no gradients.
 
 **Motion.** Minimal: 150ms color transitions on controls. Respect `prefers-reduced-motion`; no scroll-jacking or parallax.
 
@@ -46,4 +47,4 @@ The product has no icon library: it uses text glyphs (✓ in check lists, · as 
 
 Ported from the portal (`apps/portal/src/components/ui.tsx`): Button, Badge (incl. FranjaBadge), Card, Alerta, Field, ScoreHero.
 
-Intentional additions for the landing, built only from the tokens above: NavBar, Hero, PhoneShowcase, AudienceSplit, HowItWorks, DataStats, TrustList, CtaBand, Footer. Classes live in `components/bundle.css` with the `td-` prefix; each component's README says what the consumer provides.
+Intentional additions for the landing, built only from the tokens above: NavBar, Hero, PhoneShowcase, AudienceSplit, HowItWorks, DataStats, TrustList, CtaBand, Footer; and, from the final product, Problema (with RateChart), PuntajeExplicado (with ScoreBreakdown), Cuaderno, Precios, Usabilidad, Pruebalo, Preguntas and Equipo. Classes live in `components/bundle.css` with the `td-` prefix; each component's README says what the consumer provides.

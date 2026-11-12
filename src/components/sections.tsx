@@ -1,6 +1,6 @@
 /**
  * Landing sections, one per component in docs/design-system/components/ (NavBar, Hero,
- * HowItWorks, AudienceSplit, PhoneShowcase, DataStats, TrustList, CtaBand, Footer).
+ * HowItWorks, AudienceSplit, DataStats, TrustList, CtaBand, Footer). Later sections: story.tsx.
  */
 import Image from 'next/image';
 import { contactEmail, legal, links } from '@/config/links';
@@ -17,9 +17,10 @@ function Brand() {
 
 const NAV = [
   { href: '/#como-funciona', label: 'Cómo funciona' },
-  { href: '/#tenderos', label: 'Para tenderos' },
-  { href: '/#aliados', label: 'Para entidades' },
-  { href: '/#seguridad', label: 'Seguridad' },
+  { href: '/#puntaje', label: 'Tu puntaje' },
+  { href: '/#precios', label: 'Para entidades' },
+  { href: '/#pruebalo', label: 'Pruébalo' },
+  { href: '/#preguntas', label: 'Preguntas' },
 ];
 
 export function NavBar() {
@@ -63,7 +64,7 @@ export function NavBar() {
   );
 }
 
-function Phone({
+export function Phone({
   src,
   alt,
   caption,
@@ -155,7 +156,7 @@ export function HowItWorks() {
 
 export function AudienceSplit() {
   return (
-    <section className="td-section td-section--white">
+    <section className="td-section td-section--tint">
       <div className="td-container">
         <SectionHead
           eyebrow="Una evaluación, dos lados"
@@ -198,54 +199,11 @@ export function AudienceSplit() {
   );
 }
 
-export function PhoneShowcase() {
-  return (
-    <section className="td-section td-section--tint">
-      <div className="td-container">
-        <SectionHead
-          eyebrow="Producto real"
-          title="Así se ve"
-          lead="Tendi usa IA para anotar lo que le cuentas. El puntaje lo calcula un modelo que se explica, no la IA."
-        />
-        <div className="mt-8 flex flex-wrap items-start justify-center gap-8 lg:flex-nowrap">
-          <Phone
-            src="/screens/app-tendi.png"
-            alt="Tendi, el asistente, anotando una venta"
-            caption="Tendi anota ventas y fiados"
-          />
-          <Phone
-            src="/screens/app-cuaderno.png"
-            alt="Mi cuaderno: foto de una hoja del cuaderno leída por la app"
-            caption="Mi cuaderno, con una foto"
-          />
-          <figure className="m-0 w-full lg:min-w-0 lg:flex-1">
-            <div className="td-browser">
-              <div className="td-browser__bar" aria-hidden="true">
-                <span />
-                <span />
-                <span />
-              </div>
-              <Image
-                src="/screens/portal-bandeja.png"
-                alt="Portal del aliado: bandeja de solicitudes con puntaje y franja"
-                width={1280}
-                height={800}
-                sizes="(min-width: 1024px) 560px, 100vw"
-              />
-            </div>
-            <figcaption className="td-caption">El portal del aliado</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 const DATOS = [
   {
-    n: '9,6 %',
-    t: 'de las tiendas de Bogotá que pidieron crédito acudió al gota a gota, que cobra entre 382 % y 666 % al año.',
-    s: 'DANE · EMICRON 2024',
+    n: '5.992',
+    t: 'créditos productivos a tiendas de Bogotá dan la tasa real del mercado que ven el analista y el tendero.',
+    s: 'Superintendencia Financiera · datos.gov.co',
   },
   {
     n: '20.488',
@@ -294,7 +252,7 @@ const CONFIANZA = [
 
 export function TrustList() {
   return (
-    <section className="td-section" id="seguridad">
+    <section className="td-section td-section--tint" id="seguridad">
       <div className="td-container">
         <SectionHead eyebrow="Seguridad y Ley 1581" title="Tus datos son tuyos" />
         <div className="td-trust">
@@ -391,7 +349,7 @@ export function Footer() {
                 <a href={links.repo}>GitHub</a>
               </li>
               <li>
-                <a href={legal.equipo}>Equipo</a>
+                <a href="/#equipo">Equipo</a>
               </li>
             </ul>
           </nav>
