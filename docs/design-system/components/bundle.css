@@ -196,6 +196,15 @@
 /* Sections added after v1: Problema, PuntajeExplicado, Cuaderno, Precios, Usabilidad, Pruebalo,
    Preguntas, Equipo, and the two charts. Same td- conventions; values come from tokens.css. */
 
+/* Sections that skip layout and paint until they get near the viewport. Only ones that are not a
+   link target AND are not directly above one: when a skipped section renders during an anchor
+   jump, the target ignores scroll-padding and ends up under the sticky bar. */
+main > #cuaderno,
+main > .td-container {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
 .td-two {
   display: grid;
   gap: var(--space-2xl);

@@ -7,11 +7,12 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('el desglose del puntaje suma exacto', async ({ page }) => {
+  // textContent, not innerText: content-visibility leaves off-screen sections unrendered.
   const filas = page.locator('.td-breakdown tbody tr');
-  const puntos = await filas.locator('.td-breakdown__pts').allInnerTexts();
+  const puntos = await filas.locator('.td-breakdown__pts').allTextContents();
   const n = puntos.map((t) => Number(t.replace('−', '-').replace('+', '').replace(',', '.')));
   const suma = n.reduce((a, b) => a + b, 0);
-  const total = Number(await page.locator('.td-breakdown tfoot .td-breakdown__pts').innerText());
+  const total = Number(await page.locator('.td-breakdown tfoot .td-breakdown__pts').textContent());
   expect(Math.round(suma)).toBe(total);
   // The score card shows the same score.
   await expect(page.locator('#puntaje .td-score__num')).toHaveText(String(total));
@@ -57,4 +58,40 @@ test('el equipo y el menú', async ({ page }) => {
   for (const id of ['como-funciona', 'puntaje', 'precios', 'pruebalo', 'preguntas', 'equipo']) {
     await expect(page.locator(`#${id}`)).toHaveCount(1);
   }
+});
+
+// The sections use content-visibility: an anchor jump must still land right under the 72px bar.
+test('los enlaces del menú dejan la sección justo debajo de la barra', async ({ page }) => {
+  // Like a visitor: the page and its font have loaded before the first tap.
+  await page.waitForLoadState('networkidle');
+  await page.evaluate(() => document.fonts.ready);
+  const menu = page.locator('.td-nav__menu');
+  for (const id of ['puntaje', 'precios', 'pruebalo', 'preguntas']) {
+    await page.evaluate(() => window.scrollTo(0, 0));
+    if (await menu.isVisible()) {
+      await menu.locator('summary').click();
+      await menu.locator(`a[href="/#${id}"]`).click();
+    } else {
+      await page.locator(`nav[aria-label="Principal"] a[href="/#${id}"]`).click();
+    }
+    await expect
+      .poll(
+        () =>
+          page.evaluate(
+            (id) => Math.round(document.getElementById(id)!.getBoundingClientRect().top),
+            id,
+          ),
+        { message: `#${id}` },
+      )
+      .toBe(72);
+  }
+});
+
+test('el menú del celular se cierra al tocar un enlace', async ({ page }) => {
+  const menu = page.locator('.td-nav__menu');
+  test.skip(!(await menu.isVisible()), 'Solo en pantallas angostas');
+  await menu.locator('summary').click();
+  await menu.locator('a[href="/#precios"]').click();
+  await expect(menu).not.toHaveAttribute('open', '');
+  await expect(menu.locator('.td-menu__panel')).toBeHidden();
 });

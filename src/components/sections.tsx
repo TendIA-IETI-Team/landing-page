@@ -4,6 +4,7 @@
  */
 import Image from 'next/image';
 import { contactEmail, legal, links } from '@/config/links';
+import { MobileMenu } from './MobileMenu';
 import { ButtonLink, Badge, Card, SectionHead } from './ui';
 
 function Brand() {
@@ -43,21 +44,7 @@ export function NavBar() {
           <ButtonLink href={links.app} variant="primary">
             Abrir la app
           </ButtonLink>
-          <details className="td-menu td-nav__menu">
-            <summary className="td-btn td-btn--secondary" aria-label="Abrir el menú">
-              Menú
-            </summary>
-            <nav className="td-menu__panel" aria-label="Menú">
-              {NAV.map((l) => (
-                <a key={l.href} href={l.href}>
-                  {l.label}
-                </a>
-              ))}
-              <a href={links.portal} rel="noopener noreferrer">
-                Portal del aliado
-              </a>
-            </nav>
-          </details>
+          <MobileMenu items={NAV} portal={links.portal} />
         </div>
       </div>
     </header>
