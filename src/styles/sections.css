@@ -467,17 +467,13 @@ main > .td-container {
   align-items: center;
   gap: var(--space-md);
 }
-.td-person__initials {
+.td-person__photo {
   flex: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 64px;
+  height: 64px;
   border-radius: var(--radius-pill);
   background: var(--indigo100);
-  color: var(--indigo700);
-  font: 800 16px/1 var(--font-sans);
+  object-fit: cover;
 }
 .td-person__name {
   margin: 0;
