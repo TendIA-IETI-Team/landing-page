@@ -60,6 +60,20 @@ test('el equipo y el menú', async ({ page }) => {
   }
 });
 
+test('cada persona del equipo tiene su foto', async ({ page }) => {
+  const fotos = page.locator('#equipo img.td-person__photo');
+  await expect(fotos).toHaveCount(6);
+  await page.locator('#equipo').scrollIntoViewIfNeeded();
+  for (const img of await fotos.all()) {
+    await expect
+      // The image optimizer's first (cold) request can take a few seconds.
+      .poll(() => img.evaluate((el: HTMLImageElement) => el.complete && el.naturalWidth > 0), {
+        timeout: 15_000,
+      })
+      .toBe(true);
+  }
+});
+
 // The sections use content-visibility: an anchor jump must still land right under the 72px bar.
 test('los enlaces del menú dejan la sección justo debajo de la barra', async ({ page }) => {
   // Like a visitor: the page and its font have loaded before the first tap.

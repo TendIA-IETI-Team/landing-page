@@ -430,12 +430,8 @@ const EQUIPO = [
   { n: 'Raquel Iveth Selma Ayala', r: 'Documentation & QA', gh: 'RaquelSAyala' },
 ];
 
-const iniciales = (n: string) =>
-  n
-    .split(' ')
-    .filter((_, i, a) => i === 0 || i === Math.ceil(a.length / 2))
-    .map((w) => w[0])
-    .join('');
+/** Photos from the team slide of the pitch deck, 192×192 WebP in public/team/<handle>.webp. */
+const foto = (gh: string) => `/team/${gh.toLowerCase()}.webp`;
 
 export function Equipo() {
   return (
@@ -450,9 +446,16 @@ export function Equipo() {
           {EQUIPO.map((p) => (
             <li key={p.gh}>
               <Card className="td-person">
-                <span className="td-person__initials" aria-hidden="true">
-                  {iniciales(p.n)}
-                </span>
+                {/* alt="" because the name is printed right next to the photo. */}
+                <Image
+                  className="td-person__photo"
+                  src={foto(p.gh)}
+                  alt=""
+                  width={64}
+                  height={64}
+                  sizes="64px"
+                />
+
                 <div>
                   <p className="td-person__name">{p.n}</p>
                   <p className="td-person__role">{p.r}</p>
